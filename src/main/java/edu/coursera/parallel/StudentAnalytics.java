@@ -107,7 +107,7 @@ public final class StudentAnalytics {
        return Arrays.stream(studentArray).parallel()
                  .filter(s -> !s.checkIsCurrent())
                  .collect(Collectors.groupingByConcurrent(Student::getFirstName, Collectors.counting()))
-                 .entrySet().stream().max(Comparator.comparing(Map.Entry::getValue))
+                 .entrySet().stream().parallel().max(Comparator.comparing(Map.Entry::getValue))
                 .get().getKey();
 
     }
