@@ -19,8 +19,8 @@ public class StudentAnalyticsTest extends TestCase {
     }
 
     private Student[] generateStudentData() {
-        final int N_STUDENTS = 2000000;
-        final int N_CURRENT_STUDENTS = 600000;
+        final int N_STUDENTS = 50;
+        final int N_CURRENT_STUDENTS = 1;
 
         Student[] students = new Student[N_STUDENTS];
         Random r = new Random(123);
