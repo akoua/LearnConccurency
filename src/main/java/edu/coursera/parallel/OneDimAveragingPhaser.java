@@ -128,21 +128,22 @@ public final class OneDimAveragingPhaser {
                 int right = (left + chunkSize) - 1;
                 if (right > n) right = n;
 
+//                int left = i * (n/tasks) +1;
+//                int right = (i + 1) * (n / tasks);
                 for (int iter = 0; iter < iterations; iter++) {
                     // Compute leftmost boundary element for group
-//                    int left = i * (n/tasks) +1;
                     threadPrivateMyNew[left]= (threadPrivateMyVal[left - 1]
                             + threadPrivateMyVal[left + 1]) / 2.0;
 
                     // Compute rightmost boundary element for group
-//                    int right = (i + 1) * (n / tasks);
+
                     threadPrivateMyNew[right]= (threadPrivateMyVal[right - 1]
                             + threadPrivateMyVal[right + 1]) / 2.0;
 
                     //Signal arrival on phaser ph
                     int currentPhaser = ph.arrive();
 
-                    for (int j = left; j <= right; j++) {
+                    for (int j = left+1; j <= right-1; j++) {
                         threadPrivateMyNew[j] = (threadPrivateMyVal[j - 1]
                                 + threadPrivateMyVal[j + 1]) / 2.0;
                     }
